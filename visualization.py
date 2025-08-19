@@ -7,7 +7,7 @@ from scipy.signal import welch, butter, filtfilt
 from filter_band import filter_band
 
 
-def plot_correlation_vs_distance(distance_corr_pairs, title="Correlation vs. Distance", save_path=None):
+def plot_correlation_vs_distance(distance_corr_pairs, title="Correlation vs. Distance", save_path=None, show=False):
     """
     Creates a scatter plot of correlation vs. distance with a best-fit line.
 
@@ -47,10 +47,13 @@ def plot_correlation_vs_distance(distance_corr_pairs, title="Correlation vs. Dis
     
     if save_path:
         plt.savefig(save_path)
-    # plt.show()
+    if show:
+        plt.show()
+    else:
+        plt.close()
 
 
-def plot_power_spectral_density(window_data, sr, subject_id, window_index, nperseg=None, save_path=None):
+def plot_power_spectral_density(window_data, sr, subject_id, window_index, nperseg=None, save_path=None, show=False):
     """
     Plot Power Spectral Density (PSD) for all channels in a window.
     
@@ -103,10 +106,13 @@ def plot_power_spectral_density(window_data, sr, subject_id, window_index, npers
     if save_path:
         plt.savefig(save_path)
         print(f"Saved PSD plot to '{save_path}'")
-    # plt.show()
+    if show:
+        plt.show()
+    else:
+        plt.close(fig)
 
 
-def plot_correlation_heatmap(corr_matrix, title="Correlation Matrix", custom_labels=None, save_path=None):
+def plot_correlation_heatmap(corr_matrix, title="Correlation Matrix", custom_labels=None, save_path=None, show=False):
     """
     Plot correlation matrix as a heatmap.
     
@@ -136,10 +142,13 @@ def plot_correlation_heatmap(corr_matrix, title="Correlation Matrix", custom_lab
     
     if save_path:
         plt.savefig(save_path)
-    # plt.show()
+    if show:
+        plt.show()
+    else:
+        plt.close()
 
 
-def plot_dual_correlation_heatmaps(raw_corr, alpha_corr, window_index, custom_labels=None, save_path=None):
+def plot_dual_correlation_heatmaps(raw_corr, alpha_corr, window_index, custom_labels=None, save_path=None, show=False):
     """
     Plot two correlation heatmaps side by side.
     
@@ -193,10 +202,13 @@ def plot_dual_correlation_heatmaps(raw_corr, alpha_corr, window_index, custom_la
     
     if save_path:
         plt.savefig(save_path)
-    # plt.show()
+    if show:
+        plt.show()
+    else:
+        plt.close(fig)
 
 
-def plot_cross_window_correlation(cross_corr_matrix, window_index, custom_labels=None, save_path=None):
+def plot_cross_window_correlation(cross_corr_matrix, window_index, custom_labels=None, save_path=None, show=False):
     """
     Plot cross-window correlation matrix.
     
@@ -224,11 +236,14 @@ def plot_cross_window_correlation(cross_corr_matrix, window_index, custom_labels
     
     if save_path:
         plt.savefig(save_path)
-    # plt.show()
+    if show:
+        plt.show()
+    else:
+        plt.close()
 
 
 def plot_signal_comparison(raw_signal, filtered_signal, title="Signal Comparison", 
-                          xlabel="Time (s)", ylabel="Amplitude", sr=None, save_path=None):
+                          xlabel="Time (s)", ylabel="Amplitude", sr=None, save_path=None, show=False):
     """
     Plot raw and filtered signals for comparison.
     
@@ -270,11 +285,14 @@ def plot_signal_comparison(raw_signal, filtered_signal, title="Signal Comparison
     
     if save_path:
         plt.savefig(save_path)
-    # plt.show()
+    if show:
+        plt.show()
+    else:
+        plt.close()
 
 
 def plot_raw_vs_alpha(data, sr, title="Raw vs Alpha-Filtered", channel_index=0, window_index=0,
-                      low_freq=8.0, high_freq=12.0, order=4, save_path=None):
+                      low_freq=8.0, high_freq=12.0, order=4, save_path=None, show=False):
     """
     Visualize a signal before and after alpha-band filtering.
 
@@ -317,5 +335,6 @@ def plot_raw_vs_alpha(data, sr, title="Raw vs Alpha-Filtered", channel_index=0, 
         filtered_signal,
         title=title,
         sr=sr,
-        save_path=save_path
+        save_path=save_path,
+        show=show
     )

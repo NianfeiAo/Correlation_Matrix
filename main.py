@@ -59,8 +59,9 @@ def main():
     print(f"Data shape: {shape_info}")
     
     # Analysis parameters
-    num_windows = min(2, shape_info[0]) if shape_info else 20
+    num_windows = min(1, shape_info[0]) if shape_info else 20
     subject_indices = [0, 1, 2]  # Analyze first 3 subjects
+    SHOW_PLOTS = True   # Toggle showing plots interactively
     
     print(f"Analyzing {num_windows} windows for subjects {subject_indices}")
     
@@ -87,7 +88,8 @@ def main():
                 plot_correlation_vs_distance(
                     dist_corr_data,
                     title=f"Correlation vs Distance - Subject {subject_idx}, Window {window_idx}",
-                    save_path=os.path.join(output_dir, f"corr_vs_dist_subj_{subject_idx}_window_{window_idx}.png")
+                    save_path=os.path.join(output_dir, f"corr_vs_dist_subj_{subject_idx}_window_{window_idx}.png"),
+                    show=SHOW_PLOTS
                 )
                 
                 # Plot dual correlation heatmaps
@@ -96,7 +98,8 @@ def main():
                     alpha_corr, 
                     window_idx,
                     custom_labels=custom_labels,
-                    save_path=os.path.join(output_dir, f"dual_corr_heatmaps_subj_{subject_idx}_window_{window_idx}.png")
+                    save_path=os.path.join(output_dir, f"dual_corr_heatmaps_subj_{subject_idx}_window_{window_idx}.png"),
+                    show=SHOW_PLOTS
                 )
                 
                 # Plot individual correlation heatmaps
@@ -104,14 +107,16 @@ def main():
                     raw_corr,
                     title=f"Raw Correlation - Subject {subject_idx}, Window {window_idx}",
                     custom_labels=custom_labels,
-                    save_path=os.path.join(output_dir, f"raw_corr_subj_{subject_idx}_window_{window_idx}.png")
+                    save_path=os.path.join(output_dir, f"raw_corr_subj_{subject_idx}_window_{window_idx}.png"),
+                    show=SHOW_PLOTS
                 )
                 
                 plot_correlation_heatmap(
                     alpha_corr,
                     title=f"Alpha-Filtered Correlation - Subject {subject_idx}, Window {window_idx}",
                     custom_labels=custom_labels,
-                    save_path=os.path.join(output_dir, f"alpha_corr_subj_{subject_idx}_window_{window_idx}.png")
+                    save_path=os.path.join(output_dir, f"alpha_corr_subj_{subject_idx}_window_{window_idx}.png"),
+                    show=SHOW_PLOTS
                 )
 
                 # Use the same subject id already resolved above to avoid hardcoded keys
@@ -122,7 +127,8 @@ def main():
                     title=f"Raw vs Alpha-Filtered - Subject {subject_idx}, Window {window_idx}",
                     channel_index=0,
                     window_index=window_idx,
-                    save_path=os.path.join(output_dir, f"raw_vs_alpha_subj_{subject_idx}_window_{window_idx}.png")
+                    save_path=os.path.join(output_dir, f"raw_vs_alpha_subj_{subject_idx}_window_{window_idx}.png"),
+                    show=SHOW_PLOTS
                 )
 
             except Exception as e:
@@ -144,7 +150,8 @@ def main():
                     cross_corr_matrix,
                     window_idx,
                     custom_labels=custom_labels,
-                    save_path=os.path.join(output_dir, f"cross_window_corr_window_{window_idx}.png")
+                    save_path=os.path.join(output_dir, f"cross_window_corr_window_{window_idx}.png"),
+                    show=SHOW_PLOTS
                 )
                 
             except Exception as e:
@@ -165,7 +172,8 @@ def main():
                 alpha_power_corr,
                 title=f"Alpha Power Correlation - Subject {subject_idx}",
                 custom_labels=custom_labels,
-                save_path=os.path.join(output_dir, f"alpha_power_corr_subj_{subject_idx}.png")
+                save_path=os.path.join(output_dir, f"alpha_power_corr_subj_{subject_idx}.png"),
+                show=SHOW_PLOTS
             )
             
         except Exception as e:
@@ -188,7 +196,8 @@ def main():
                     sr=512,
                     subject_id=subjects[subject_idx],
                     window_index=window_idx,
-                    save_path=os.path.join(output_dir, f"psd_subj_{subject_idx}_window_{window_idx}.png")
+                    save_path=os.path.join(output_dir, f"psd_subj_{subject_idx}_window_{window_idx}.png"),
+                    show=SHOW_PLOTS
                 )
                 
             except Exception as e:
