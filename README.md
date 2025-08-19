@@ -142,3 +142,4 @@ pip install -r requirements.txt
 2. Electrode layout and channel order must match the data
 3. Sampling rate parameters must be consistent with actual data
 4. Output directory must have write permissions
+# Correlation_Matrix_Optimized
