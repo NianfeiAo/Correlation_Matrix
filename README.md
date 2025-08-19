@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Multichannel ECoG GAN Spatial Matrix Analysis
 
 This project is used to analyze spatial correlation matrices of multichannel ECoG data, including correlation analysis of raw signals and alpha-band filtered signals.
@@ -154,3 +155,6 @@ pip install -r requirements.txt
 # Correlation_Matrix_Optimized
 # Correlation_Matrix_Optimized
 # Correlation_Matrix_Optimized
+=======
+# NianfeiAo-Correlation_Matrix_Optimized
+>>>>>>> 2eabddf874e65aa6dd387c02c921033eda9ae019
